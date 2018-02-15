@@ -424,7 +424,6 @@ public class PostgresITDataSource extends PoolingDataSource<PoolableConnection> 
          * Search environment variable for database location
          * <p>
          * Environment variable should contain a uri with:
-         * <p>
          * <ul>
          * <li> no schema or schema 'postgres' or 'postgresql'
          * <li> user
@@ -454,7 +453,6 @@ public class PostgresITDataSource extends PoolingDataSource<PoolableConnection> 
 
         /**
          * Allow use of $PG* environment variables for database discovery
-         * <p>
          * <ul>
          * <li> user is $PGUSER or ${user.name}
          * <li> password is $PGPASSWORD or ${user.name}
@@ -559,8 +557,7 @@ public class PostgresITDataSource extends PoolingDataSource<PoolableConnection> 
         }
 
         /**
-         * Convenience constructor for {@link #DatabaseFromProperty(java.lang.String, java.lang.String)
-         * }
+         * Convenience constructor for DatabaseFromProperty(String, String)
          * <p>
          * Passes through the databaseName, and constructs a system property as
          * given 'postgresql.${databaseName}.port'
