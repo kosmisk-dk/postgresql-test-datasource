@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>dk.kosmisk</groupId>
+    <artifactId>postgresql-test-datasource</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>${project.groupId}:${project.artifactId}</name>
+
+    <developers>
+        <developer>
+            <name>Morten Bøgeskov</name>
+            <email>source@kosmisk.dk</email>
+            <organization>kosmisk-dk</organization>
+            <organizationUrl>https://kosmisk.dk/</organizationUrl>
+        </developer>
+    </developers>
+    
+    <scm>
+        <connection>scm:git:git://github.com/kosmisk-dk/postgresql-test-datasource.git</connection>
+        <developerConnection>scm:git:ssh://github.com:kosmisk-dk/postgresql-test-datasource.git</developerConnection>
+        <url>https://github.com/kosmisk-dk/postgresql-test-datasource/tree/master</url>
+    </scm>
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>https://github.com/kosmisk-dk/postgresql-test-datasource/tree/master/LICENSE.txt</url>
+        </license>
+    </licenses>
+    
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <compilerArgs>
+                        <compilerArg>-Xlint:unchecked</compilerArg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.4</version>
+                <executions>
+                    <execution> 
+                        <goals>
+                            <goal>jar</goal>
+                        </goals> 
+                    </execution> 
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.20.1</version>
+                <configuration>
+                    <redirectTestOutputToFile>false</redirectTestOutputToFile>
+                    <systemPropertyVariables>
+                        <postgresql.testbase.port>${postgresql.testbase.port}</postgresql.testbase.port>
+                    </systemPropertyVariables>
+                    <argLine>-Dfile.encoding=${project.build.sourceEncoding}</argLine>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            
+            <plugin>
+                <groupId>dk.kosmisk</groupId>
+                <artifactId>postgresql-maven-plugin</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <configuration>
+                    <!-- <groupId>dk.kosmisk</groupId> -->
+                    <!-- <artifactId>postgresql-binary</artifactId> -->
+                    <!--<version>10.2</version>-->
+                    <!--<version>LATEST</version>-->
+                    <!-- <folder>${project.build.directory}/postgresql</folder> -->
+                    <!-- <overwrite>true</overwrite> -->
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>postgresql-test-database</id>
+                        <goals>
+                            <goal>setup</goal>
+                            <goal>startup</goal>
+                            <goal>shutdown</goal>
+                        </goals>
+                        <configuration>
+                            <!-- <portProperty>postgresql.port</portProperty> -->
+                            <!-- <port>${postgresql.port}</port> -->
+                            <name>testbase</name>
+                            <!-- <user>${user.name}</user> -->
+                            <!-- <password>${user.name}</password> -->
+                            <!-- <logfile>${folder}/db/testbase.log</logfile> -->
+                            <!-- <settings>
+                                <archive_command>'rm %p'</archive_command>
+                                <archive_mode>on</archive_mode>
+                            </settings> -->
+                            <scripts>
+                                <scritp>${basedir}/src/test/resources/testbase.sql</scritp>
+                            </scripts>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+            <version>2.1.1</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.1.4</version>
+            <scope>test</scope>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>annotations</artifactId>
+            <version>3.0.1</version>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
+</project>

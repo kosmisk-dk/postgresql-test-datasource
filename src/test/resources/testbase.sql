@@ -1,0 +1,14 @@
+CREATE TABLE foo (
+  fool TEXT NOT NULL PRIMARY KEY
+);
+CREATE TABLE bar (
+  baal TEXT NOT NULL PRIMARY KEY,
+  fool TEXT NOT NULL,
+  FOREIGN KEY (fool) REFERENCES foo(fool)
+);
+
+CREATE TABLE fin (
+  finl TEXT NOT NULL PRIMARY KEY,
+  baal TEXT NOT NULL,
+  FOREIGN KEY (baal) REFERENCES bar(baal)
+);
