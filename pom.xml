@@ -33,6 +33,7 @@
     
 
     <properties>
+        <gpg.sign>false</gpg.sign>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -131,6 +132,24 @@
                             <scripts>
                                 <scritp>${basedir}/src/test/resources/testbase.sql</scritp>
                             </scripts>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                        <configuration>
+                            <skip>${gpg.sign}</skip>
                         </configuration>
                     </execution>
                 </executions>
