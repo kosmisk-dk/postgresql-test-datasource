@@ -124,7 +124,8 @@
                             <name>testbase</name>
                             <!-- <user>${user.name}</user> -->
                             <!-- <password>${user.name}</password> -->
-                            <!-- <logfile>${folder}/db/testbase.log</logfile> -->
+                            <!-- <databaseFolder>${folder}/db/${name}</databaseFolder> -->
+                            <!-- <logfile>${databaseFolder}.log</logfile> -->
                             <!-- <settings>
                                 <archive_command>'rm %p'</archive_command>
                                 <archive_mode>on</archive_mode>
