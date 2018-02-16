@@ -33,7 +33,7 @@
     
 
     <properties>
-        <gpg.sign>false</gpg.sign>
+        <gpg.no-sign>true</gpg.no-sign>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -149,7 +149,7 @@
                             <goal>sign</goal>
                         </goals>
                         <configuration>
-                            <skip>${gpg.sign}</skip>
+                            <skip>${gpg.no-sign}</skip>
                         </configuration>
                     </execution>
                 </executions>
