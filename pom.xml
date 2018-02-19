@@ -8,7 +8,19 @@
     <packaging>jar</packaging>
 
     <name>${project.groupId}:${project.artifactId}</name>
-
+    
+    <description>
+        An integration test helper designed for dk.kosmisk:postgresql-maven-plugin.
+        
+        It is able to create a DataSource that connects to a postgresql, given a
+        system-property with a port in it and a database name, or a URI in an
+        environment variable or from PG* environment variables or to a personal
+        PostgreSQL instance, with user/password/database-name which is the same as
+        the user name for the user running the tests.
+    </description>
+    
+    <url>https://github.com/kosmisk-dk/postgresql-test-datasource/</url>
+    
     <developers>
         <developer>
             <name>Morten Bøgeskov</name>
@@ -186,4 +198,43 @@
             <type>jar</type>
         </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-release-plugin</artifactId>
+                        <version>2.5.3</version>
+                        <configuration>
+                            <autoVersionSubmodules>true</autoVersionSubmodules>
+                            <useReleaseProfile>false</useReleaseProfile>
+                            <releaseProfiles>release</releaseProfiles>
+                            <goals>deploy</goals>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.6.7</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+            <distributionManagement>
+                <repository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                </repository>
+            </distributionManagement>
+        </profile>
+    </profiles>
+
 </project>
