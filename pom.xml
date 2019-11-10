@@ -4,7 +4,7 @@
 
     <groupId>dk.kosmisk</groupId>
     <artifactId>postgresql-test-datasource</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <packaging>jar</packaging>
 
     <name>${project.groupId}:${project.artifactId}</name>
@@ -56,7 +56,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
+                <version>3.8.1</version>
                 <configuration>
                     <compilerArgs>
                         <compilerArg>-Xlint:unchecked</compilerArg>
@@ -66,7 +66,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>3.0.1</version>
+                <version>3.2.0</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -79,7 +79,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.10.4</version>
+                <version>3.1.1</version>
                 <executions>
                     <execution> 
                         <goals>
@@ -92,7 +92,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>2.20.1</version>
+                <version>2.22.2</version>
                 <configuration>
                     <redirectTestOutputToFile>false</redirectTestOutputToFile>
                     <systemPropertyVariables>
@@ -113,7 +113,7 @@
             <plugin>
                 <groupId>dk.kosmisk</groupId>
                 <artifactId>postgresql-maven-plugin</artifactId>
-                <version>1.0.1</version>
+                <version>1.0.4</version>
                 <configuration>
                     <!-- <groupId>dk.kosmisk</groupId> -->
                     <!-- <artifactId>postgresql-binary</artifactId> -->
@@ -153,7 +153,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
-                <version>1.5</version>
+                <version>1.6</version>
                 <executions>
                     <execution>
                         <id>sign-artifacts</id>
@@ -175,13 +175,13 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-dbcp2</artifactId>
-            <version>2.1.1</version>
+            <version>2.7.0</version>
             <type>jar</type>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.1.4</version>
+            <version>42.2.8</version>
             <scope>test</scope>
             <type>jar</type>
         </dependency>
@@ -218,7 +218,7 @@
                     <plugin>
                         <groupId>org.sonatype.plugins</groupId>
                         <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>1.6.7</version>
+                        <version>1.6.8</version>
                         <extensions>true</extensions>
                         <configuration>
                             <serverId>ossrh</serverId>

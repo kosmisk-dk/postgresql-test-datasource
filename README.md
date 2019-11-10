@@ -75,7 +75,7 @@ A typical use case is outlined below:
 
         <dependency>
             <groupId>dk.kosmisk</groupId>
-            <artifactId>postgresql-test-jpa</artifactId>
+            <artifactId>postgresql-test-datasource</artifactId>
             <version>${some.version}</version>
             <type>jar</type>
         </dependency>
