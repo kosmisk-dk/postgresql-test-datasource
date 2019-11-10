@@ -571,7 +571,7 @@ public class PostgresITDataSource extends PoolingDataSource<PoolableConnection> 
      */
     public static class DatabaseFromEnvironment implements DatabaseLocation {
 
-        private static final Pattern POSTGRES_URL_REGEX = Pattern.compile("(?:postgres(?:ql)?://)?(?:([^:@]+)(?::([^@]*))@)?([^:/]+)(?:([1-9][0-9]*))?/(.+)");
+        private static final Pattern POSTGRES_URL_REGEX = Pattern.compile("(?:postgres(?:ql)?://)?(?:([^:@]+)(?::([^@]*))@)?([^:/]+)(?::([1-9][0-9]*))?/(.+)");
 
         private final String environmentName;
 
